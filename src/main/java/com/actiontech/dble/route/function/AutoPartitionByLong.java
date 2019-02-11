@@ -5,8 +5,11 @@
 */
 package com.actiontech.dble.route.function;
 
+import com.actiontech.dble.config.model.SystemConfig;
 import com.actiontech.dble.config.model.rule.RuleAlgorithm;
 import com.actiontech.dble.util.ResourceUtil;
+import java.io.File;
+import java.io.FileInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -130,8 +133,8 @@ public class AutoPartitionByLong extends AbstractPartitionAlgorithm implements R
         StringBuilder sb = new StringBuilder("{");
         BufferedReader in = null;
         try {
-            // FileInputStream fin = new FileInputStream(new File(fileMapPath));
-            InputStream fin = ResourceUtil.getResourceAsStreamFromRoot(mapFile);
+            File file = new File(SystemConfig.getHomePath(), "conf" + File.separator + mapFile);
+            InputStream fin = new FileInputStream(file);
             if (fin == null) {
                 throw new RuntimeException("can't find class resource file " + mapFile);
             }

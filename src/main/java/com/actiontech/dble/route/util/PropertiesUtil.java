@@ -5,9 +5,12 @@
 
 package com.actiontech.dble.route.util;
 
+import com.actiontech.dble.config.model.SystemConfig;
 import com.actiontech.dble.route.sequence.handler.IncrSequenceHandler;
 import com.actiontech.dble.util.ResourceUtil;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
@@ -26,7 +29,9 @@ public final class PropertiesUtil {
 
     public static Properties loadProps(String propsFile) {
         Properties props = new Properties();
-        try (InputStream inp = ResourceUtil.getResourceAsStreamForCurrentThread(propsFile)) {
+        File file = new File(SystemConfig.getHomePath(), "conf" + File.separator + propsFile);
+
+        try (InputStream inp = new FileInputStream(file)) {
             if (inp == null) {
                 throw new java.lang.RuntimeException("sequence properties not found " + propsFile);
             }

@@ -12,6 +12,8 @@ import com.actiontech.dble.config.model.UserConfig;
 import com.actiontech.dble.config.util.ConfigException;
 import com.actiontech.dble.config.util.ConfigUtil;
 import com.actiontech.dble.util.ResourceUtil;
+import java.io.File;
+import java.io.FileInputStream;
 import org.w3c.dom.Element;
 
 import java.io.IOException;
@@ -64,7 +66,8 @@ public class XMLServerLoader {
         InputStream xml = null;
         try {
             dtd = ResourceUtil.getResourceAsStream("/server.dtd");
-            xml = ResourceUtil.getResourceAsStream("/server.xml");
+            File serverFile = new File(SystemConfig.getHomePath(), "conf" + File.separator + "server.xml");
+            xml = new FileInputStream(serverFile);
             return ConfigUtil.getDocument(dtd, xml).getDocumentElement();
         } catch (ConfigException e) {
             throw e;

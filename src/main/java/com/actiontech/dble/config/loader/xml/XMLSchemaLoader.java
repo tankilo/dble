@@ -17,6 +17,8 @@ import com.actiontech.dble.route.function.AbstractPartitionAlgorithm;
 import com.actiontech.dble.util.DecryptUtil;
 import com.actiontech.dble.util.ResourceUtil;
 import com.actiontech.dble.util.SplitUtil;
+import java.io.File;
+import java.io.FileInputStream;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -85,7 +87,8 @@ public class XMLSchemaLoader implements SchemaLoader {
         InputStream xml = null;
         try {
             dtd = ResourceUtil.getResourceAsStream(dtdFile);
-            xml = ResourceUtil.getResourceAsStream(xmlFile);
+            File file = new File(SystemConfig.getHomePath(), "conf" + File.separator + xmlFile);
+            xml = new FileInputStream(file);
             Element root = ConfigUtil.getDocument(dtd, xml).getDocumentElement();
             loadDataHosts(root);
             loadDataNodes(root);

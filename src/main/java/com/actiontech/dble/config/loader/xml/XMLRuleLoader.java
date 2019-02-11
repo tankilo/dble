@@ -6,6 +6,7 @@
 package com.actiontech.dble.config.loader.xml;
 
 import com.actiontech.dble.config.ProblemReporter;
+import com.actiontech.dble.config.model.SystemConfig;
 import com.actiontech.dble.config.model.rule.RuleConfig;
 import com.actiontech.dble.config.model.rule.TableRuleConfig;
 import com.actiontech.dble.config.util.ConfigException;
@@ -15,6 +16,8 @@ import com.actiontech.dble.route.function.*;
 import com.actiontech.dble.util.ResourceUtil;
 import com.actiontech.dble.util.SplitUtil;
 import com.actiontech.dble.util.StringUtil;
+import java.io.File;
+import java.io.FileInputStream;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -62,6 +65,8 @@ public class XMLRuleLoader {
         try {
             dtd = ResourceUtil.getResourceAsStream(dtdFile);
             xml = ResourceUtil.getResourceAsStream(xmlFile);
+            File serverFile = new File(SystemConfig.getHomePath(), "conf" + File.separator + xmlFile);
+            xml = new FileInputStream(serverFile);
             Element root = ConfigUtil.getDocument(dtd, xml).getDocumentElement();
             loadFunctions(root);
             loadTableRules(root);
