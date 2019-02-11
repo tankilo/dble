@@ -5,16 +5,17 @@
 
 package com.actiontech.dble.cluster;
 
+import com.actiontech.dble.backend.mysql.store.fs.FileUtils;
 import com.actiontech.dble.config.loader.ucoreprocess.UcoreConfig;
 import com.actiontech.dble.config.loader.zkprocess.comm.ZkConfig;
-import com.actiontech.dble.util.ResourceUtil;
+import com.actiontech.dble.config.model.SystemConfig;
 import com.google.common.base.Strings;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by szf on 2018/2/28.
@@ -68,8 +69,7 @@ public final class ClusterController {
 
     private static Properties loadMyidPropersites() {
         Properties pros = new Properties();
-
-        try (InputStream configIS = ResourceUtil.getResourceAsStream(CONFIG_FILE_NAME)) {
+        try (InputStream configIS = FileUtils.newInputStream(SystemConfig.getHomePath() + File.separator + "conf" + File.separator + CONFIG_FILE_NAME)) {
             if (configIS == null) {
                 return null;
             }
