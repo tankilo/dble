@@ -51,7 +51,7 @@ public class UXmlEhcachesLoader implements UcoreXmlLoader {
         JSONObject jsonObj = JSONObject.parseObject(configValue.getValue());
         if (jsonObj.get(UcorePathUtil.EHCACHE) != null) {
             Ehcache ehcache = parseJsonEhcacheService.parseJsonToBean(jsonObj.getJSONObject(UcorePathUtil.EHCACHE).toJSONString());
-            String path = ResourceUtil.getResourcePathFromRoot(UcorePathUtil.UCORE_LOCAL_WRITE_PATH);
+            String path = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(UcorePathUtil.UCORE_LOCAL_WRITE_PATH);
             path = new File(path).getPath() + File.separator + WRITEPATH;
             this.parseEcacheXMl.parseToXmlWrite(ehcache, path, null);
         }

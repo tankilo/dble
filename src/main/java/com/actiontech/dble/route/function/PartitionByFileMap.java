@@ -117,8 +117,7 @@ public class PartitionByFileMap extends AbstractPartitionAlgorithm implements Ru
         StringBuilder sb = new StringBuilder("{");
         BufferedReader in = null;
         try {
-            File file = new File(SystemConfig.getHomePath(), "conf" + File.separator + mapFile);
-            InputStream fin = new FileInputStream(file);
+            InputStream fin = ResourceUtil.getReousrceFromSystemHomeConfigDir(mapFile);
             if (fin == null) {
                 throw new RuntimeException("can't find class resource file " + mapFile);
             }

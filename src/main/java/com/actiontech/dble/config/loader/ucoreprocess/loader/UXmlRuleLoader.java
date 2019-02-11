@@ -73,7 +73,7 @@ public class UXmlRuleLoader implements UcoreXmlLoader {
         List<TableRule> tableRules = parseJsonTableRuleService.parseJsonToBean(jsonObj.getJSONArray(UcorePathUtil.TABLE_RULE).toJSONString());
         rule.setTableRule(tableRules);
 
-        String path = ResourceUtil.getResourcePathFromRoot(UcorePathUtil.UCORE_LOCAL_WRITE_PATH);
+        String path = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(UcorePathUtil.UCORE_LOCAL_WRITE_PATH);
         path = new File(path).getPath() + File.separator;
         path += WRITEPATH;
 

@@ -87,8 +87,7 @@ public class XMLSchemaLoader implements SchemaLoader {
         InputStream xml = null;
         try {
             dtd = ResourceUtil.getResourceAsStream(dtdFile);
-            File file = new File(SystemConfig.getHomePath(), "conf" + File.separator + xmlFile);
-            xml = new FileInputStream(file);
+            xml = ResourceUtil.getReousrceFromSystemHomeConfigDir(xmlFile);
             Element root = ConfigUtil.getDocument(dtd, xml).getDocumentElement();
             loadDataHosts(root);
             loadDataNodes(root);

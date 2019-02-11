@@ -67,7 +67,7 @@ public class UXmlServerLoader implements UcoreXmlLoader {
         }
         server.setSystem(parseJsonSystem.parseJsonToBean(jsonObj.getJSONObject(UcorePathUtil.DEFAULT).toJSONString()));
         server.setUser(parseJsonUser.parseJsonToBean(jsonObj.getJSONArray(UcorePathUtil.USER).toJSONString()));
-        String path = ResourceUtil.getResourcePathFromRoot(UcorePathUtil.UCORE_LOCAL_WRITE_PATH);
+        String path = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(UcorePathUtil.UCORE_LOCAL_WRITE_PATH);
         path = new File(path).getPath() + File.separator;
         path += WRITEPATH;
         this.parseServerXMl.parseToXmlWrite(server, path, "server");

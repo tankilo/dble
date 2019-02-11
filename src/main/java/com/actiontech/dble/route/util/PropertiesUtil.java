@@ -29,9 +29,7 @@ public final class PropertiesUtil {
 
     public static Properties loadProps(String propsFile) {
         Properties props = new Properties();
-        File file = new File(SystemConfig.getHomePath(), "conf" + File.separator + propsFile);
-
-        try (InputStream inp = new FileInputStream(file)) {
+        try (InputStream inp = ResourceUtil.getReousrceFromSystemHomeConfigDir(propsFile)) {
             if (inp == null) {
                 throw new java.lang.RuntimeException("sequence properties not found " + propsFile);
             }

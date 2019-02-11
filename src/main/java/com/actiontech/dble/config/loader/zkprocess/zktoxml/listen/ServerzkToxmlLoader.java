@@ -75,7 +75,7 @@ public class ServerzkToxmlLoader extends ZkMultiLoader implements NotifyService 
 
         LOGGER.info("ServerzkToxmlLoader notifyProcess zk to object  zk server Object  :" + server);
 
-        String path = ResourceUtil.getResourcePathFromRoot(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
+        String path = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
         path = new File(path).getPath() + File.separator;
         path += WRITEPATH;
 

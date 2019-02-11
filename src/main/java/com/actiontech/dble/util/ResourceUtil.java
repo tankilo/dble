@@ -5,6 +5,10 @@
 
 package com.actiontech.dble.util;
 
+import com.actiontech.dble.config.model.SystemConfig;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
@@ -28,5 +32,21 @@ public final class ResourceUtil {
 
     public static InputStream getResourceAsStreamFromRoot(String path) {
         return ResourceUtil.class.getClassLoader().getResourceAsStream(path);
+    }
+
+    public static String getReousrcePathFromSystemHomeConfigDir(String path) {
+        return SystemConfig.getHomePath() + File.separator + "conf" + File.separator + path;
+    }
+
+    public static InputStream getReousrceFromSystemHomeConfigDir(String fileName) {
+        File file = new File(getReousrcePathFromSystemHomeConfigDir(fileName));
+        if (!file.exists()) {
+            return null;
+        }
+        try {
+            return new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            return null;
+        }
     }
 }

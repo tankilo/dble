@@ -85,7 +85,7 @@ public class EcacheszkToxmlLoader extends ZkMultiLoader implements NotifyService
 
         Ehcache ehcache = parseJsonEhcacheService.parseJsonToBean(ehcacheZkDirectory.getDataValue());
 
-        String outputPath = ResourceUtil.getResourcePathFromRoot(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
+        String outputPath = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
         outputPath = new File(outputPath).getPath() + File.separator;
         outputPath += KVPathUtil.EHCACHE_NAME;
 

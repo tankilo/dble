@@ -23,7 +23,7 @@ public final class ConfFileRWUtils {
     public static String readFile(String name) throws IOException {
         StringBuilder mapFileStr = new StringBuilder();
         String path = ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey() + name;
-        InputStream input = ResourceUtil.getResourceAsStreamFromRoot(path);
+        InputStream input = ResourceUtil.getReousrceFromSystemHomeConfigDir(path);
         checkNotNull(input, "read file curr Path :" + path + " is null! It must be not null");
         byte[] buffers = new byte[256];
         try {
@@ -46,7 +46,7 @@ public final class ConfFileRWUtils {
     }
 
     public static void writeFile(String name, String value) throws IOException {
-        String path = ResourceUtil.getResourcePathFromRoot(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
+        String path = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
         checkNotNull(path, "write ecache file curr Path :" + path + " is null! It must be not null");
         path = new File(path).getPath() + File.separator + name;
 

@@ -80,7 +80,7 @@ public class RuleszkToxmlLoader extends ZkMultiLoader implements NotifyService {
 
         LOGGER.info("RuleszkToxmlLoader notifyProcess write mapFile is success ");
 
-        String path = ResourceUtil.getResourcePathFromRoot(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
+        String path = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
         path = new File(path).getPath() + File.separator;
         path = path + WRITEPATH;
 

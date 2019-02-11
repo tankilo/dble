@@ -51,7 +51,7 @@ public class CacheService {
 
     private void init(boolean isLowerCaseTableNames) throws Exception {
         Properties props = new Properties();
-        try (InputStream stream = ResourceUtil.getResourceAsStream("/cacheservice.properties")) {
+        try (InputStream stream = ResourceUtil.getReousrceFromSystemHomeConfigDir("/cacheservice.properties")) {
             if (stream == null) {
                 LOGGER.info("cache don't be used currently! if use, please configure cacheservice.properties");
                 return;

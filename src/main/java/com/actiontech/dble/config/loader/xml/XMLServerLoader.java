@@ -66,8 +66,7 @@ public class XMLServerLoader {
         InputStream xml = null;
         try {
             dtd = ResourceUtil.getResourceAsStream("/server.dtd");
-            File serverFile = new File(SystemConfig.getHomePath(), "conf" + File.separator + "server.xml");
-            xml = new FileInputStream(serverFile);
+            xml = ResourceUtil.getReousrceFromSystemHomeConfigDir("server.xml");
             return ConfigUtil.getDocument(dtd, xml).getDocumentElement();
         } catch (ConfigException e) {
             throw e;

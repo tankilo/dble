@@ -77,7 +77,7 @@ public class SchemaszkToxmlLoader extends ZkMultiLoader implements NotifyService
 
         LOGGER.info("SchemasLoader notifyProcess zk to object  zk schema Object  :" + schema);
 
-        String path = ResourceUtil.getResourcePathFromRoot(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
+        String path = ResourceUtil.getReousrcePathFromSystemHomeConfigDir(ZookeeperPath.ZK_LOCAL_WRITE_PATH.getKey());
         path = new File(path).getPath() + File.separator;
         path += WRITEPATH;
 

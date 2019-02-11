@@ -171,7 +171,7 @@ public class XmlProcessBase {
      * @Created 2016/9/16
      */
     public Object baseParseXmlToBean(String fileName) throws JAXBException, XMLStreamException {
-        InputStream inputStream = ResourceUtil.getResourceAsStreamFromRoot(fileName);
+        InputStream inputStream = ResourceUtil.getReousrceFromSystemHomeConfigDir(fileName);
 
         if (inputStream != null) {
             XMLInputFactory xif = XMLInputFactory.newFactory();

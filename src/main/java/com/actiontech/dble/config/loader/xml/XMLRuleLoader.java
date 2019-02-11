@@ -64,9 +64,7 @@ public class XMLRuleLoader {
         InputStream xml = null;
         try {
             dtd = ResourceUtil.getResourceAsStream(dtdFile);
-            xml = ResourceUtil.getResourceAsStream(xmlFile);
-            File serverFile = new File(SystemConfig.getHomePath(), "conf" + File.separator + xmlFile);
-            xml = new FileInputStream(serverFile);
+            xml = ResourceUtil.getReousrceFromSystemHomeConfigDir(xmlFile);
             Element root = ConfigUtil.getDocument(dtd, xml).getDocumentElement();
             loadFunctions(root);
             loadTableRules(root);
